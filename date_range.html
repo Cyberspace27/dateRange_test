@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date Range</title>
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+	<!-- <script src="app.js"></script> -->
+	<script src="app_v1.js"></script>
+
+
+</head>
+<body>
+
+	<div ng-app="tst"> 
+	<div ng-controller="MyController"> 
+	    <table>
+	                <tr>
+	                    <td>From:<input  ng-model="date1"  type="text" placeholder="" /></td>
+	                        <td>To:<input  ng-model="date2"  type="text" placeholder="" /></td>
+	                </tr>
+
+	                <tr ng-repeat="order in orders | dateRangeFilter:date1:date2">
+	                    <td>{{order.date * 1000 | date:'dd-MM-yyyy'}}</td>
+	                </tr>
+	                <!-- 
+	                <tr ng-repeat="order in orders | dateRangeFilter:date1:date2">
+	                    <td>{{order.date1 * 1000 | date:'dd-MM-yyyy'}}</td>
+	                    <td>{{order.date2 * 1000 | date:'dd-MM-yyyy'}}</td> 
+	                </tr>
+	                -->
+
+
+	    </table>
+
+	    <ul >
+	    <li ng-repeat="order in orders  | dateRangeFilter:date1:date2">Date 1 = {{order.date * 1000 | date:'dd-MM-yyyy'}}</li>
+	    </ul>
+	</div>
+	</div>
+
+</body>
+</html>
